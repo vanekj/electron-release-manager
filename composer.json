@@ -1,0 +1,23 @@
+{
+    "name": "vanekj/electron-releaser",
+    "description": "Electron apps release server",
+    "keywords": ["electron", "release", "server"],
+    "homepage": "https://github.com/vanekj/electron-releaser",
+    "license": "MIT",
+    "authors": [{
+        "name": "Jakub Vaněk",
+        "email": "info@jakub-vanek.eu",
+        "homepage": "https://www.jakub-vanek.eu"
+    }],
+    "require": {
+        "php": ">=5.5.0",
+        "slim/slim": "^3.1",
+        "slim/twig-view": "^2.3"
+    },
+    "config": {
+        "process-timeout" : 0
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public"
+    }
+}
