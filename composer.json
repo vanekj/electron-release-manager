@@ -18,7 +18,8 @@
         "php": ">=5.5.0",
         "slim/slim": "^3.1",
         "slim/twig-view": "^2.3",
-        "illuminate/database": "~5.1"
+        "illuminate/database": "~5.1",
+        "oscarotero/psr7-middlewares": "^3.21"
     },
     "config": {
         "process-timeout" : 0
