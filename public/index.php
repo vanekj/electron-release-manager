@@ -1,18 +1,18 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+chdir(dirname(__DIR__));
+
+require 'vendor/autoload.php';
 
 session_start();
 
-// Instantiate the app
-$settings = require __DIR__ . '/../src/settings.php';
+$settings = require 'src/settings.php';
 $app = new \Slim\App($settings);
 
-// Set up dependencies
-require __DIR__ . '/../src/dependencies.php';
+require 'src/dependencies.php';
+require 'src/routes.php';
 
-// Register routes
-require __DIR__ . '/../src/routes.php';
+$capsule = $app->getContainer()->get('capsule');
+$capsule->bootEloquent();
 
-// Run app
 $app->run();

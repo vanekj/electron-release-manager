@@ -2,11 +2,24 @@
 
 return [
 	'settings' => [
-		'displayErrorDetails' => true, // Use "false" for production
+		'displayErrorDetails' => true,
 		'addContentLengthHeader' => false,
-		'renderer' => [
-			'template_path' => __DIR__ . '/../templates/',
-			'cache_path' => __DIR__ . '/../cache/'
+		'view' => [
+			'template_path' => 'templates',
+			'twig' => [
+                'cache' => 'cache/twig',
+                'debug' => true
+            ]
+		],
+		'db' => [
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'electron_releaser',
+			'username'  => 'electron_releaser',
+			'password'  => 'electron_releaser',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => ''
 		]
 	]
 ];
