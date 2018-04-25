@@ -17,6 +17,6 @@ class HomeController
 
 	public function showHomepage(Request $request, Response $response, array $params)
 	{
-		return $this->view->render($response, 'homepage.twig', $params);
+		return $this->view->render($response, 'public/pages/homepage.twig', $params);
 	}
 }

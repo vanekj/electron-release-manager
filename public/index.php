@@ -10,8 +10,10 @@ $settings = require 'src/settings.php';
 $app = new \Slim\App($settings);
 
 require 'src/dependencies.php';
+
 require 'src/middleware.php';
-require 'src/routes.php';
+
+require 'src/routes/public.php';
 
 $capsule = $app->getContainer()->get('capsule');
 $capsule->bootEloquent();
