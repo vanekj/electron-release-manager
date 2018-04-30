@@ -5,9 +5,9 @@ return [
 		'displayErrorDetails' => true,
 		'addContentLengthHeader' => false,
 		'view' => [
-			'template_path' => 'templates',
+			'template_path' => '../templates',
 			'twig' => [
-                'cache' => 'cache/twig',
+                'cache' => '../cache/twig',
                 'debug' => true
             ]
 		],
