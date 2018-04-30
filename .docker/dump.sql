@@ -1,0 +1,3 @@
+CREATE DATABASE electron_releaser
+	DEFAULT CHARACTER SET utf8
+	DEFAULT COLLATE utf8_unicode_ci;
