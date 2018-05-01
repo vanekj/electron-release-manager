@@ -7,9 +7,10 @@
 			<title>{% block title %}{% endblock %}Electron Releaser</title>
 		{% endblock %}
 		<link rel="stylesheet" href="/resources/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/resources/css/main.css" />
 	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+	<body class="{% block body_class %}{% endblock %}">
+		<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
 			<div class="container">
 				<a href="{{ path_for('homepage') }}" class="navbar-brand mb-0 h1">Electron Releaser</a>
 
@@ -35,11 +36,11 @@
 					</ul>
 				</div>
 			</div>
-		</nav>
+		</nav> -->
 
-		<div class="container">
-			{% block content %}{% endblock %}
-		</div>
+		<!-- <div class="container"> -->
+		{% block content %}{% endblock %}
+		<!-- </div> -->
 
 		<script src="/resources/js/jquery-3.3.1.min.js"></script>
 		<script src="/resources/js/bootstrap.bundle.min.js"></script>

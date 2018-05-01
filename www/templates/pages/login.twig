@@ -2,36 +2,32 @@
 
 {% block title %}Login | {% endblock %}
 
+{% block body_class %}login text-center{% endblock %}
+
 {% block content %}
-	<div class="row justify-content-center">
-		<div class="col-md-5 col-sm-10 col-xs-12">
-			<form action="{{ path_for('auth.login') }}" method="POST" class="mt-3" autocomplete="off">
-				{% if flash.getMessage('auth.error') %}
-					<div class="alert alert-danger">
-						{{ flash.getMessage('auth.error') | first }}
-					</div>
-				{% endif %}
+	<form action="{{ path_for('auth.login') }}" method="POST" class="form-signin" autocomplete="off">
+		<img src="/resources/images/electron.svg" class="mb-4" height="100" />
+		<h1 class="h3 mb-3 font-weight-normal">Electron Releaser</h1>
 
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" name="email" id="email" value="{{ old.email }}" class="form-control{{ errors.email ? ' is-invalid' : '' }}" />
-					{% if errors.email %}
-						<small class="form-text invalid-feedback">{{ errors.email | first }}</small>
-					{% endif %}
-				</div>
+		{% if flash.getMessage('auth.error') or errors %}
+			<div class="alert alert-danger text-left">
+				{% for error in flash.getMessage('auth.error') %}
+					{{ error }}
+				{% endfor %}
 
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" name="password" id="password" class="form-control{{ errors.password ? ' is-invalid' : '' }}" />
-					{% if errors.password %}
-						<small class="form-text invalid-feedback">{{ errors.password | first }}</small>
-					{% endif %}
-				</div>
+				{% for error in errors %}
+					{{ error | first }}<br />
+				{% endfor %}
+			</div>
+		{% endif %}
 
-				{{ csrf_field() | raw() }}
+		<input type="email" name="email" placeholder="Email address" value="{{ old.email }}" class="form-control{{ errors.email ? ' is-invalid' : '' }}" />
+		<input type="password" name="password" placeholder="Password" class="form-control{{ errors.password ? ' is-invalid' : '' }}" />
 
-				<button type="submit" class="btn btn-block btn-success">Login</button>
-			</form>
-		</div>
-	</div>
+		{{ csrf_field() | raw() }}
+
+		<button type="submit" class="mt-4 btn btn-lg btn-primary btn-block">Login</button>
+
+		<p class="mt-5 mb-3 text-muted">Copyright © 2018 Jakub Vaněk</p>
+	</form>
 {% endblock %}
