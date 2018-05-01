@@ -15,8 +15,9 @@ $container['view'] = function($container) {
 		$container['settings']['view']['twig']
 	);
 	$view->addExtension(new Slim\Views\TwigExtension($container->router, $container->request->getUri()));
-    $view->addExtension(new Twig_Extension_Debug());
-    return $view;
+	$view->addExtension(new ElectronReleaser\Views\DebugExtension());
+	$view->addExtension(new ElectronReleaser\Views\GuardExtension($container['csrf']));
+	return $view;
 };
 
 // Eloquent
@@ -30,4 +31,14 @@ $container['capsule'] = function ($container) {
 // Home controller
 $container['HomeController'] = function ($container) {
 	return new ElectronReleaser\Controllers\HomeController($container);
+};
+
+// Auth controller
+$container['AuthController'] = function ($container) {
+	return new ElectronReleaser\Controllers\AuthController($container);
+};
+
+// Dashboard controller
+$container['DashboardController'] = function ($container) {
+	return new ElectronReleaser\Controllers\DashboardController($container);
 };

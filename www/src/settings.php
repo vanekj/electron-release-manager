@@ -7,9 +7,9 @@ return [
 		'view' => [
 			'template_path' => '../templates',
 			'twig' => [
-                'cache' => '../cache/twig',
-                'debug' => true
-            ]
+				// 'cache' => '../cache/twig',
+				'cache' => false
+			]
 		],
 		'db' => [
 			'driver'    => 'mysql',
