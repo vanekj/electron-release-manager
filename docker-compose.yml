@@ -13,7 +13,7 @@ services:
     links:
       - mysql
     environment:
-      DB_HOSTNAME: localhost
+      DB_HOSTNAME: mysql
       DB_DATABASE: electron_releaser
       DB_USERNAME: root
       DB_PASSWORD: root
