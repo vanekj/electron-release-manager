@@ -21,7 +21,9 @@
         "illuminate/database": "~5.1",
         "slim/csrf": "^0.8.2",
         "oscarotero/psr7-middlewares": "^3.21",
-        "symfony/var-dumper": "^4.0"
+        "symfony/var-dumper": "^4.0",
+        "respect/validation": "^1.1",
+        "slim/flash": "^0.4.0"
     },
     "config": {
         "process-timeout" : 0
