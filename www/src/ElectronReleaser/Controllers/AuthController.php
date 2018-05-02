@@ -10,12 +10,13 @@ class AuthController extends Controller
 	public function getLogout($request, $response)
 	{
 		$this->auth->logout();
-		return $response->withRedirect($this->router->pathFor('homepage'));
+		return $response->withRedirect($this->router->pathFor('auth.login'));
 	}
 
 	public function getLogin($request, $response, array $params)
 	{
-		return $this->view->render($response, 'pages/login.twig', $params);
+		$this->auth->logout();
+		return $this->view->render($response, 'auth/login.twig', $params);
 	}
 
 	public function postLogin($request, $response)
