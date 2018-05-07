@@ -40,6 +40,6 @@ class AuthController extends Controller
 			return $response->withRedirect($this->router->pathFor('auth.login'));
 		}
 
-		return $response->withRedirect($this->router->pathFor('dashboard'));
+		return $response->withRedirect($this->router->pathFor('dashboard.manage-versions'));
 	}
 }

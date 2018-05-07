@@ -1,10 +1,12 @@
 <?php
 
+use Respect\Validation\Validator as v;
+
 // App container
 $container = $app->getContainer();
 
 // Csrf protection
-$container['guard'] = function () {
+$container['csrf'] = function () {
 	return new Slim\Csrf\Guard;
 };
 
@@ -39,7 +41,7 @@ $container['view'] = function ($container) {
 
 	$view->addExtension(new Slim\Views\TwigExtension($container->router, $container->request->getUri()));
 	$view->addExtension(new ElectronReleaser\Views\DebugExtension());
-	$view->addExtension(new ElectronReleaser\Views\GuardExtension($container['guard']));
+	$view->addExtension(new ElectronReleaser\Views\GuardExtension($container['csrf']));
 
 	$view->getEnvironment()->addGlobal('auth', [
 		'check' => $container->auth->check(),
@@ -51,6 +53,9 @@ $container['view'] = function ($container) {
 	return $view;
 };
 
+// Setup custom validations
+v::with('ElectronReleaser\\Validation\\Rules');
+
 // Home controller
 $container['HomeController'] = function ($container) {
 	return new ElectronReleaser\Controllers\HomeController($container);
@@ -61,7 +66,12 @@ $container['AuthController'] = function ($container) {
 	return new ElectronReleaser\Controllers\AuthController($container);
 };
 
-// Dashboard controller
-$container['DashboardController'] = function ($container) {
-	return new ElectronReleaser\Controllers\DashboardController($container);
+// ManageVersions controller
+$container['ManageVersionsController'] = function ($container) {
+	return new ElectronReleaser\Controllers\ManageVersionsController($container);
+};
+
+// UploadTokens controller
+$container['UploadTokensController'] = function ($container) {
+	return new ElectronReleaser\Controllers\UploadTokensController($container);
 };

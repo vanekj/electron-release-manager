@@ -1,0 +1,78 @@
+{% extends 'template.twig' %}
+
+{% block title %}Upload tokens | {% endblock %}
+
+{% block content %}
+<div class="row mb-5 align-items-end">
+	<div class="col-8">
+		Upload tokens<br />
+		<small>Tokens used in API calls to push new version and its assets</small>
+	</div>
+
+	<div class="col-4">
+		<form class="input-group input-group-sm" action="{{ path_for('dashboard.upload-tokens') }}" method="POST" autocomplete="off">
+			<input type="text" name="label" class="form-control{{ errors.label ? ' is-invalid' : '' }}" placeholder="Token label" maxlength="32" />
+			<input type="hidden" name="action" value="create" />
+
+			<div class="input-group-append">
+				<button class="btn btn-outline-success" type="submit">Generate new token</button>
+			</div>
+		</form>
+
+		{% if errors.label %}
+			<small class="text-danger">{{ errors.label | first }}</small>
+		{% endif %}
+	</div>
+</div>
+
+{% if errors.token_id %}
+	<div class="alert alert-danger">
+		{{ errors.token_id | first }}
+	</div>
+{% endif %}
+
+<div class="card">
+	{% if uploadTokens is not empty %}
+		<div class="table-responsive">
+			<table class="table table-hover table-striped m-0">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Token</th>
+						<th class="text-right">Created</th>
+						<th class="text-right">Used</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% for token in uploadTokens %}
+						<tr>
+							<td class="align-middle"><span class="badge badge-secondary">{{ token.label }}</span></td>
+							<td class="align-middle">{{ token.value }}</td>
+							<td class="align-middle text-right">
+								{{ token.createdBy.email }}
+								<small>({{ token.created_at|date('d. m. Y H:i') }})</small>
+							<td class="align-middle text-right">{{ token.used_times }}x</td>
+							<td class="align-middle">
+								<form action="{{ path_for('dashboard.upload-tokens') }}" method="POST">
+									<input type="hidden" name="action" value="delete" />
+									<input type="hidden" name="token_id" value="{{ token.id }}" />
+
+									<button type="submit" class="btn btn-sm btn-danger">
+										<div class="fa fa-trash"></div>
+									</button>
+								</form>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	{% else %}
+		<div class="card-body text-center text-muted">
+			No tokens found, maybe generate one?
+		</div>
+	{% endif %}
+</div>
+{% endblock %}

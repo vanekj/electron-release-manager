@@ -4,12 +4,6 @@ namespace ElectronReleaser\Middleware;
 
 class BreadcrumbMiddleware extends Middleware
 {
-	private function storeSession(array $items)
-	{
-		unset($_SESSION['breadcrumbs']);
-		$_SESSION['breadcrumbs'] = $items;
-	}
-
 	public function __invoke($request, $response, $next)
 	{
 		$items = [];
@@ -18,17 +12,24 @@ class BreadcrumbMiddleware extends Middleware
 
 		$items[] = [
 			'name' => 'Dashboard',
-			'url' => $router->pathFor('dashboard')
+			'url' => '/dashboard'
 		];
 
-		if ($routeName === 'dashboard') {
+		if ($routeName === 'dashboard.manage-versions') {
 			$items[] = [
-				'name' => 'Manage versions',
-				'url' => $router->pathFor('dashboard')
+				'name' => 'Manage versions'
 			];
 		}
 
-		$this->storeSession($items);
+		if ($routeName === 'dashboard.upload-tokens') {
+			$items[] = [
+				'name' => 'Upload tokens'
+			];
+		}
+
+		unset($_SESSION['breadcrumbs']);
+		$_SESSION['breadcrumbs'] = $items;
+
 		$this->container->view->getEnvironment()->addGlobal('breadcrumbs', $_SESSION['breadcrumbs']);
 
 		$response = $next($request, $response);

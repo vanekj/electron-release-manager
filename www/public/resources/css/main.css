@@ -41,6 +41,11 @@ body.login {
 	border-top-right-radius: 0;
 }
 
+.er-upload .fa,
+.er-upload .fas {
+	margin-left: 0.5rem;
+}
+
 .breadcrumbs {
 	background: #dde4e6;
 }

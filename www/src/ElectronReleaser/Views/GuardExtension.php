@@ -6,11 +6,11 @@ use Slim\Csrf\Guard;
 
 class GuardExtension extends \Twig_Extension
 {
-	protected $guard;
+	protected $csrf;
 
-	public function __construct(Guard $guard)
+	public function __construct(Guard $csrf)
 	{
-		$this->guard = $guard;
+		$this->csrf = $csrf;
 	}
 
 	public function getFunctions()
@@ -23,8 +23,8 @@ class GuardExtension extends \Twig_Extension
 	public function getField()
 	{
 		return "
-			<input type=\"hidden\" name=\"{$this->guard->getTokenNameKey()}\" value=\"{$this->guard->getTokenName()}\" />
-			<input type=\"hidden\" name=\"{$this->guard->getTokenValueKey()}\" value=\"{$this->guard->getTokenValue()}\" />
+			<input type=\"hidden\" name=\"{$this->csrf->getTokenNameKey()}\" value=\"{$this->csrf->getTokenName()}\" />
+			<input type=\"hidden\" name=\"{$this->csrf->getTokenValueKey()}\" value=\"{$this->csrf->getTokenValue()}\" />
 		";
 	}
 }
