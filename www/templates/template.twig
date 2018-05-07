@@ -6,11 +6,19 @@
 		{% block head %}
 			<title>{% block title %}{% endblock %}Electron Releaser</title>
 		{% endblock %}
-		<link rel="stylesheet" href="/resources/css/materia.bootstrap.min.css" />
+		<link rel="stylesheet" href="/resources/css/flatly.bootstrap.min.css" />
 		<link rel="stylesheet" href="/resources/css/main.css" />
 	</head>
 	<body class="{% block body_class %}{% endblock %}">
-		{% block content %}{% endblock %}
+		{% if auth.check %}
+			{% include "partials/navbar.partial.twig" %}
+			{% include "partials/breadcrumb.partial.twig" %}
+			<div class="container">
+				{{ block('content') }}
+			</div>
+		{% else %}
+			{{ block('content') }}
+		{% endif %}
 
 		<script src="/resources/js/jquery-3.3.1.min.js"></script>
 		<script src="/resources/js/bootstrap.bundle.min.js"></script>

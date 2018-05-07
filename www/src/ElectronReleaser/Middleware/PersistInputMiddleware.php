@@ -4,8 +4,6 @@ namespace ElectronReleaser\Middleware;
 
 class PersistInputMiddleware extends Middleware
 {
-	protected $container;
-
 	public function __invoke($request, $response, $next)
 	{
 		$this->container->view->getEnvironment()->addGlobal('old', $_SESSION['old']);

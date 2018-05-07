@@ -11,3 +11,6 @@ $app->add(new ElectronReleaser\Middleware\ValidationErrorsMiddleware($container)
 
 // Persist form values
 $app->add(new ElectronReleaser\Middleware\PersistInputMiddleware($container));
+
+// Breadcrumbs
+$app->add(new ElectronReleaser\Middleware\BreadcrumbMiddleware($container));

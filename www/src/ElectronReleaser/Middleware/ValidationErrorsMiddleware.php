@@ -4,8 +4,6 @@ namespace ElectronReleaser\Middleware;
 
 class ValidationErrorsMiddleware extends Middleware
 {
-	protected $container;
-
 	public function __invoke($request, $response, $next)
 	{
 		$this->container->view->getEnvironment()->addGlobal('errors', $_SESSION['errors']);

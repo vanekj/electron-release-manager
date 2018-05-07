@@ -4,8 +4,6 @@ namespace ElectronReleaser\Middleware;
 
 class AuthMiddleware extends Middleware
 {
-	protected $container;
-
 	public function __invoke($request, $response, $next)
 	{
 		if (!$this->container->auth->check()) {
