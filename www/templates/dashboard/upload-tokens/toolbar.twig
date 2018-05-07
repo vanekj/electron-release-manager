@@ -1,0 +1,27 @@
+<div class="row mb-5 align-items-end">
+	<div class="col-8">
+		Upload tokens<br />
+		<small>Tokens used in API calls to push new version and its assets</small>
+	</div>
+
+	<div class="col-4">
+		<form class="input-group input-group-sm" action="{{ path_for('dashboard.upload-tokens') }}" method="POST" autocomplete="off">
+			<input type="text" name="label" class="form-control{{ errors.label ? ' is-invalid' : '' }}" placeholder="Token label" maxlength="32" />
+			<input type="hidden" name="action" value="create" />
+
+			<div class="input-group-append">
+				<button class="btn btn-outline-success" type="submit">Generate new token</button>
+			</div>
+		</form>
+
+		{% if errors.label %}
+			<small class="text-danger">{{ errors.label | first }}</small>
+		{% endif %}
+	</div>
+</div>
+
+{% if errors.token_id %}
+	<div class="alert alert-danger">
+		{{ errors.token_id | first }}
+	</div>
+{% endif %}
