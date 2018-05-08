@@ -4,7 +4,7 @@ namespace ElectronReleaser\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UploadToken extends Model
+class Token extends Model
 {
 	protected $fillable = [
 		'label',

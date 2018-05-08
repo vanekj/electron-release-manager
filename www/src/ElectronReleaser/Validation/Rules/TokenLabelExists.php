@@ -3,12 +3,12 @@
 namespace ElectronReleaser\Validation\Rules;
 
 use Respect\Validation\Rules\AbstractRule;
-use ElectronReleaser\Models\UploadToken;
+use ElectronReleaser\Models\Token;
 
 class TokenLabelExists extends AbstractRule
 {
 	public function validate($input)
 	{
-		return !UploadToken::where('label', $input)->count();
+		return !Token::where('label', $input)->count();
 	}
 }

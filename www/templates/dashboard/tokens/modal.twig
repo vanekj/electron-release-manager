@@ -1,11 +1,11 @@
-<div id="modal-remove-upload-token" class="modal fade" tabindex="-1">
-	<form class="modal-dialog" action="{{ path_for('dashboard.upload-tokens') }}" method="POST">
+<div id="modal-remove-token" class="modal fade" tabindex="-1">
+	<form class="modal-dialog" action="{{ path_for('dashboard.tokens') }}" method="POST">
 		<input type="hidden" name="action" value="delete" />
 		<input type="hidden" name="token_id" data-value="tokenId" />
 
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Delete upload token?</h5>
+				<h5 class="modal-title">Delete token?</h5>
 				<button type="button" class="close" data-dismiss="modal">
 					<span>&times;</span>
 				</button>

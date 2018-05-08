@@ -2,10 +2,10 @@
 
 namespace ElectronReleaser\Controllers;
 
-use ElectronReleaser\Models\UploadToken;
+use ElectronReleaser\Models\Token;
 use Respect\Validation\Validator as v;
 
-class UploadTokensController extends Controller
+class TokensController extends Controller
 {
 	private function createToken($request, array $parameters)
 	{
@@ -14,7 +14,7 @@ class UploadTokensController extends Controller
 		]);
 
 		if (!$validation->failed()) {
-			UploadToken::create([
+			Token::create([
 				'label' => $parameters['label'],
 				'value' => sha1(uniqid()),
 				'created_by' => $this->auth->user()->id
@@ -29,7 +29,7 @@ class UploadTokensController extends Controller
 		]);
 
 		if (!$validation->failed()) {
-			$foundToken = UploadToken::find($parameters['token_id']);
+			$foundToken = Token::find($parameters['token_id']);
 
 			if ($foundToken) {
 				$foundToken->delete();
@@ -39,8 +39,8 @@ class UploadTokensController extends Controller
 
 	public function get($request, $response)
 	{
-		return $this->view->render($response, 'dashboard/upload-tokens.twig', [
-			'uploadTokens' => UploadToken::with('createdBy')->orderBy('created_at', 'DESC')->get()
+		return $this->view->render($response, 'dashboard/tokens.twig', [
+			'tokens' => Token::with('createdBy')->orderBy('created_at', 'DESC')->get()
 		]);
 	}
 
@@ -54,6 +54,6 @@ class UploadTokensController extends Controller
 			$this->deleteToken($request, $parameters);
 		}
 
-		return $response->withRedirect($this->router->pathFor('dashboard.upload-tokens'));
+		return $response->withRedirect($this->router->pathFor('dashboard.tokens'));
 	}
 }

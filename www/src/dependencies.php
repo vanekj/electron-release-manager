@@ -67,11 +67,11 @@ $container['AuthController'] = function ($container) {
 };
 
 // ManageVersions controller
-$container['ManageVersionsController'] = function ($container) {
-	return new ElectronReleaser\Controllers\ManageVersionsController($container);
+$container['VersionsController'] = function ($container) {
+	return new ElectronReleaser\Controllers\VersionsController($container);
 };
 
-// UploadTokens controller
-$container['UploadTokensController'] = function ($container) {
-	return new ElectronReleaser\Controllers\UploadTokensController($container);
+// Tokens controller
+$container['TokensController'] = function ($container) {
+	return new ElectronReleaser\Controllers\TokensController($container);
 };

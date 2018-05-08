@@ -8,8 +8,8 @@ class User extends Model
 {
 	public $timestamps = false;
 
-	public function uploadTokens()
+	public function tokens()
 	{
-		return $this->belongsToMany('ElectronReleaser\Models\UploadToken', 'created_by');
+		return $this->belongsToMany('ElectronReleaser\Models\Token', 'created_by');
 	}
 }

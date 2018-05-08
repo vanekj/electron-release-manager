@@ -15,15 +15,15 @@ class BreadcrumbMiddleware extends Middleware
 			'url' => '/dashboard'
 		];
 
-		if ($routeName === 'dashboard.manage-versions') {
+		if ($routeName === 'dashboard.versions') {
 			$items[] = [
-				'name' => 'Manage versions'
+				'name' => 'Versions'
 			];
 		}
 
-		if ($routeName === 'dashboard.upload-tokens') {
+		if ($routeName === 'dashboard.tokens') {
 			$items[] = [
-				'name' => 'Upload tokens'
+				'name' => 'Tokens'
 			];
 		}
 

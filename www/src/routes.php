@@ -3,13 +3,13 @@
 use ElectronReleaser\Middleware\AuthMiddleware;
 
 $app->redirect('/', '/dashboard');
-$app->redirect('/dashboard', '/dashboard/manage-versions');
+$app->redirect('/dashboard', '/dashboard/versions');
 
 $app->group('/dashboard', function() {
-	$this->get('/manage-versions', 'ManageVersionsController:index')->setName('dashboard.manage-versions');
+	$this->get('/versions', 'VersionsController:index')->setName('dashboard.versions');
 
-	$this->get('/upload-tokens', 'UploadTokensController:get')->setName('dashboard.upload-tokens');
-	$this->post('/upload-tokens', 'UploadTokensController:post');
+	$this->get('/tokens', 'TokensController:get')->setName('dashboard.tokens');
+	$this->post('/tokens', 'TokensController:post');
 })->add(new AuthMiddleware($container));
 
 $app->group('/auth', function() {

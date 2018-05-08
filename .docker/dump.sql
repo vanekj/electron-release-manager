@@ -15,8 +15,8 @@ CREATE TABLE users (
 	PRIMARY KEY (id)
 ) ENGINE = InnoDB;
 
--- Create upload_tokens table
-CREATE TABLE upload_tokens (
+-- Create tokens table
+CREATE TABLE tokens (
 	id INT NOT NULL AUTO_INCREMENT,
 	value TEXT NOT NULL,
 	label VARCHAR(32) NOT NULL,

@@ -1,5 +1,5 @@
 <div class="card">
-	{% if uploadTokens is not empty %}
+	{% if tokens is not empty %}
 		<div class="table-responsive">
 			<table class="table table-hover m-0">
 				<thead>
@@ -13,7 +13,7 @@
 				</thead>
 
 				<tbody>
-					{% for token in uploadTokens %}
+					{% for token in tokens %}
 						<tr>
 							<td class="align-middle text-right"><span class="badge badge-primary">{{ token.label }}</span></td>
 							<td class="align-middle">{{ token.value }}</td>
@@ -22,7 +22,7 @@
 								<small>({{ token.created_at|date('d. m. Y H:i') }})</small>
 							<td class="align-middle text-right">{{ token.used_times }}x</td>
 							<td class="align-middle">
-								<button class="btn btn-sm btn-link text-danger js-form-modal" data-token-id="{{ token.id }}" data-toggle="modal" data-target="#modal-remove-upload-token">
+								<button class="btn btn-sm btn-link text-danger js-form-modal" data-token-id="{{ token.id }}" data-toggle="modal" data-target="#modal-remove-token">
 									<div class="fa fa-trash"></div>
 								</button>
 							</td>
