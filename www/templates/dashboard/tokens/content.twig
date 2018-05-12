@@ -20,7 +20,7 @@
 							<td class="align-middle text-right">
 								{{ token.createdBy.email }}
 								<small>({{ token.created_at|date('d. m. Y H:i') }})</small>
-							<td class="align-middle text-right">{{ token.used_times }}x</td>
+							<td class="align-middle text-right">{{ token.times_used }}x</td>
 							<td class="align-middle">
 								<button class="btn btn-sm btn-link text-danger js-form-modal" data-token-id="{{ token.id }}" data-toggle="modal" data-target="#modal-remove-token">
 									<div class="fa fa-trash"></div>
