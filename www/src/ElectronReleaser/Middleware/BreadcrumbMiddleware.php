@@ -21,6 +21,17 @@ class BreadcrumbMiddleware extends Middleware
 			];
 		}
 
+		if ($routeName === 'dashboard.versions.new') {
+			$items[] = [
+				'name' => 'Versions',
+				'url' => $router->pathFor('dashboard.versions')
+			];
+
+			$items[] = [
+				'name' => 'Upload new version'
+			];
+		}
+
 		if ($routeName === 'dashboard.tokens') {
 			$items[] = [
 				'name' => 'Tokens'
