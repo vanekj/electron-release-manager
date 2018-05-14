@@ -1,0 +1,38 @@
+.dad-area {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px dashed #ced4da;
+	min-height: 70px;
+	padding: 10px 20px;
+	background-color: #f6f8f9;
+	border-radius: 0.25rem;
+	transition: border-color 0.15s ease-in-out;
+}
+
+.dad-area:hover {
+	border-color: #2C3E50;
+}
+
+.dad-area .dad-label,
+.dad-area .dad-filename {
+	margin: 0;
+	padding: 0;
+}
+
+.dad-area input[type="file"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+	text-indent: -9999px;
+	background: transparent;
+	overflow: hidden;
+	cursor: pointer;
+}

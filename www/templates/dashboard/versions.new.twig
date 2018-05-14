@@ -3,5 +3,88 @@
 {% block title %}Upload new version | {% endblock %}
 
 {% block content %}
+	<div class="row">
+		<div class="col">
+			<form action="{{ path_for('dashboard.versions.new') }}" method="POST">
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<div class="form-group">
+							<label for="name">Version name</label>
+							<input type="text" name="name" id="name" class="form-control" />
+						</div>
+					</div>
 
+					<div class="col-7 col-md-3">
+						<div class="form-group">
+							<label for="number">Version number</label>
+							<input type="text" name="number" id="number" class="form-control" />
+						</div>
+					</div>
+
+					<div class="col-5 col-md-3">
+						<div class="form-group">
+							<label for="channel">Channel</label>
+							<select name="channel" id="channel" class="form-control">
+								<option value="latest">latest</option>
+								<option value="beta">beta</option>
+								<option value="alpha">alpha</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-12">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-6">
+									<label for="release-notes">Release notes</label>
+									<textarea name="release-notes" id="release-notes" rows="20" class="form-control" data-md-target="#md-target"></textarea>
+								</div>
+
+								<div class="col-6">
+									<label>Markdown preview</label>
+									<div class="card">
+										<div id="md-target" class="card-body"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-4">
+						<div class="form-group">
+							<div class="js-dad dad-area">
+								<p class="dad-filename" data-dad-content="Please select the file"></p>
+								<small class="dad-label text-muted">Windows download/update file (.exe)</small>
+								<input type="file" name="win-download" id="win-download" class="form-control" accept=".exe" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-4">
+						<div class="form-group">
+							<div class="js-dad dad-area">
+								<p class="dad-filename" data-dad-content="Please select the file"></p>
+								<small class="dad-label text-muted">Mac download file (.dmg)</small>
+								<input type="file" name="mac-download" id="mac-download" class="form-control" accept=".dmg" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-lg-4">
+						<div class="form-group">
+							<div class="js-dad dad-area">
+								<p class="dad-filename" data-dad-content="Please select the file"></p>
+								<small class="dad-label text-muted">Mac update file (.zip)</small>
+								<input type="file" name="mac-update" id="mac-update" class="form-control" accept=".zip" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group text-right">
+					<button type="submit" class="btn btn-primary">Submit new version</button>
+				</div>
+			</form>
+		</div>
+	</div>
 {% endblock %}
