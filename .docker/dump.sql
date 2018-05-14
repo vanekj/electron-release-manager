@@ -38,17 +38,6 @@ CREATE TABLE versions (
 	release_name TEXT NULL DEFAULT NULL,
 	release_notes TEXT NULL DEFAULT NULL,
 	is_public BOOLEAN NOT NULL DEFAULT FALSE,
-	created_by INT NOT NULL,
-	updated_by INT NOT NULL,
-	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	updated_at TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (id)
-) ENGINE = InnoDB;
-
--- Create assets table
-CREATE TABLE assets (
-	id INT NOT NULL AUTO_INCREMENT,
-	version_id INT NOT NULL,
 	win_download TEXT NOT NULL,
 	mac_download TEXT NOT NULL,
 	win_update TEXT NOT NULL,
@@ -57,6 +46,10 @@ CREATE TABLE assets (
 	mac_download_hash TEXT NOT NULL,
 	win_update_hash TEXT NOT NULL,
 	mac_update_hash TEXT NOT NULL,
+	created_by INT NOT NULL,
+	updated_by INT NOT NULL,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
 ) ENGINE = InnoDB;
 
