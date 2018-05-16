@@ -5,30 +5,39 @@
 {% block content %}
 	<div class="row">
 		<div class="col">
-			<form action="{{ path_for('dashboard.versions.new') }}" method="POST">
+			<form action="{{ path_for('dashboard.versions.new') }}" method="POST" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="name">Version name</label>
-							<input type="text" name="name" id="name" class="form-control" />
+							<input type="text" name="name" id="name" value="{{ old.name }}" class="form-control{{ errors.name ? ' is-invalid' : '' }}" />
+							{% if errors.name %}
+								<small class="form-text text-danger">{{ errors.name | first }}</small>
+							{% endif %}
 						</div>
 					</div>
 
 					<div class="col-7 col-md-3">
 						<div class="form-group">
 							<label for="number">Version number</label>
-							<input type="text" name="number" id="number" class="form-control" />
+							<input type="text" name="number" id="number" value="{{ old.number }}" class="form-control{{ errors.number ? ' is-invalid' : '' }}" />
+							{% if errors.number %}
+								<small class="form-text text-danger">{{ errors.number | first }}</small>
+							{% endif %}
 						</div>
 					</div>
 
 					<div class="col-5 col-md-3">
 						<div class="form-group">
 							<label for="channel">Channel</label>
-							<select name="channel" id="channel" class="form-control">
-								<option value="latest">latest</option>
-								<option value="beta">beta</option>
-								<option value="alpha">alpha</option>
+							<select name="channel" id="channel" class="form-control{{ errors.channel ? ' is-invalid' : '' }}">
+								<option value="latest"{{ old.channel == 'latest' ? ' selected="selected"' : '' }}>latest</option>
+								<option value="beta"{{ old.channel == 'beta' ? ' selected="selected"' : '' }}>beta</option>
+								<option value="alpha"{{ old.channel == 'alpha' ? ' selected="selected"' : '' }}>alpha</option>
 							</select>
+							{% if errors.channel %}
+								<small class="form-text text-danger">{{ errors.channel | first }}</small>
+							{% endif %}
 						</div>
 					</div>
 
@@ -37,7 +46,10 @@
 							<div class="row">
 								<div class="col-6">
 									<label for="release-notes">Release notes</label>
-									<textarea name="release-notes" id="release-notes" rows="20" class="form-control" data-md-target="#md-target"></textarea>
+									<textarea name="release-notes" id="release-notes" rows="20" class="form-control{{ errors['release-notes'] ? ' is-invalid' : '' }}" data-md-target="#md-target">{{ old['release-notes'] }}</textarea>
+									{% if errors['release-notes'] %}
+										<small class="form-text text-danger">{{ errors['release-notes'] | first }}</small>
+									{% endif %}
 								</div>
 
 								<div class="col-6">
@@ -55,7 +67,10 @@
 							<div class="js-dad dad-area">
 								<p class="dad-filename" data-dad-content="Please select the file"></p>
 								<small class="dad-label text-muted">Windows download/update file (.exe)</small>
-								<input type="file" name="win-download" id="win-download" class="form-control" accept=".exe" />
+								<input type="file" name="win-download" id="win-download" class="form-control{{ errors['win-download'] ? ' is-invalid' : '' }}" />
+								{% if errors['win-download'] %}
+									<small class="form-text text-danger">{{ errors['win-download'] | first }}</small>
+								{% endif %}
 							</div>
 						</div>
 					</div>
@@ -65,7 +80,10 @@
 							<div class="js-dad dad-area">
 								<p class="dad-filename" data-dad-content="Please select the file"></p>
 								<small class="dad-label text-muted">Mac download file (.dmg)</small>
-								<input type="file" name="mac-download" id="mac-download" class="form-control" accept=".dmg" />
+								<input type="file" name="mac-download" id="mac-download" class="form-control{{ errors['mac-download'] ? ' is-invalid' : '' }}" />
+								{% if errors['mac-download'] %}
+									<small class="form-text text-danger">{{ errors['mac-download'] | first }}</small>
+								{% endif %}
 							</div>
 						</div>
 					</div>
@@ -75,7 +93,10 @@
 							<div class="js-dad dad-area">
 								<p class="dad-filename" data-dad-content="Please select the file"></p>
 								<small class="dad-label text-muted">Mac update file (.zip)</small>
-								<input type="file" name="mac-update" id="mac-update" class="form-control" accept=".zip" />
+								<input type="file" name="mac-update" id="mac-update" class="form-control{{ errors['mac-update'] ? ' is-invalid' : '' }}" />
+								{% if errors['mac-update'] %}
+									<small class="form-text text-danger">{{ errors['mac-update'] | first }}</small>
+								{% endif %}
 							</div>
 						</div>
 					</div>
