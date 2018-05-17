@@ -70,6 +70,10 @@
 								<input type="file" name="win-download" id="win-download" class="form-control{{ errors['win-download'] ? ' is-invalid' : '' }}" accept=".exe" />
 								{% if errors['win-download'] %}
 									<small class="form-text text-danger">{{ errors['win-download'] | first }}</small>
+								{% else %}
+									<div class="progress w-100">
+										<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 35%"></div>
+									</div>
 								{% endif %}
 							</div>
 						</div>
@@ -83,6 +87,10 @@
 								<input type="file" name="mac-download" id="mac-download" class="form-control{{ errors['mac-download'] ? ' is-invalid' : '' }}" accept=".dmg" />
 								{% if errors['mac-download'] %}
 									<small class="form-text text-danger">{{ errors['mac-download'] | first }}</small>
+								{% else %}
+									<div class="progress w-100">
+										<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 75%"></div>
+									</div>
 								{% endif %}
 							</div>
 						</div>
@@ -96,6 +104,10 @@
 								<input type="file" name="mac-update" id="mac-update" class="form-control{{ errors['mac-update'] ? ' is-invalid' : '' }}" accept=".zip" />
 								{% if errors['mac-update'] %}
 									<small class="form-text text-danger">{{ errors['mac-update'] | first }}</small>
+								{% else %}
+									<div class="progress w-100">
+										<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 15%"></div>
+									</div>
 								{% endif %}
 							</div>
 						</div>

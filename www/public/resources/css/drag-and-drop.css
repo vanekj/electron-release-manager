@@ -5,7 +5,7 @@
 	justify-content: center;
 	align-items: center;
 	border: 1px dashed #ced4da;
-	min-height: 70px;
+	min-height: 80px;
 	padding: 10px 20px;
 	background-color: #f6f8f9;
 	border-radius: 0.25rem;
@@ -35,4 +35,8 @@
 	background: transparent;
 	overflow: hidden;
 	cursor: pointer;
+}
+
+.dad-area .progress {
+	margin: 5px 0;
 }
