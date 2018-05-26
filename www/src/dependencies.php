@@ -43,6 +43,16 @@ $container['view'] = function ($container) {
 	$view->addExtension(new ElectronReleaser\Views\DebugExtension());
 	$view->addExtension(new ElectronReleaser\Views\GuardExtension($container['csrf']));
 
+	$view->getEnvironment()->addGlobal('maxUploadSize', (function() {
+		$ini_value = trim(ini_get('upload_max_filesize'));
+		$s = [
+			'g' => 1<<30,
+			'm' => 1<<20,
+			'k' => 1<<10
+		];
+		return intval($ini_value) * ($s[strtolower(substr($ini_value, -1))] ?: 1);
+	})());
+
 	$view->getEnvironment()->addGlobal('auth', [
 		'check' => $container->auth->check(),
 		'user' => $container->auth->user()

@@ -40,4 +40,9 @@ class VersionsController extends Controller
 		// 	return $response->withRedirect($this->router->pathFor('dashboard.versions.new'));
 		// }
 	}
+
+	public function postAsset($request, $response)
+	{
+		echo "ok";
+	}
 }

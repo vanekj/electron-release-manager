@@ -10,6 +10,7 @@ $app->group('/dashboard', function() {
 
 	$this->get('/versions/new', 'VersionsController:getNew')->setName('dashboard.versions.new');
 	$this->post('/versions/new', 'VersionsController:postNew');
+	$this->post('/versions/asset', 'VersionsController:postAsset');
 
 	$this->get('/tokens', 'TokensController:get')->setName('dashboard.tokens');
 	$this->post('/tokens', 'TokensController:post');
